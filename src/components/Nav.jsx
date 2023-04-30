@@ -1,9 +1,6 @@
-import { useState } from "react";
 import city from "../assets/img/city.png";
 
 const Nav = () => {
-  const [showDrawer, setShowDrawer] = useState(false);
-
   return (
     <nav className="bg-gray-800">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
