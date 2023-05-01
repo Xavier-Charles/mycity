@@ -5,9 +5,12 @@ import badagry from "../assets/img/places/badagry.png";
 import sabo from "../assets/img/places/sabo.png";
 
 const Hero = ({ cityData, selectedCityId, setSelectedCityId }) => {
-  const infoSectionPos = document.getElementById("infoSection")?.getBoundingClientRect().y;
   const handleClick = (id) => {
-    window.scrollTo({
+    const infoSectionPos = document
+      .getElementById("infoSection")
+      ?.getBoundingClientRect().y;
+
+    window.scrollBy({
       top: infoSectionPos,
       left: 0,
       behavior: "smooth",
