@@ -4,10 +4,14 @@ import moment from "moment";
 import { onValue, ref } from "firebase/database";
 import { trafficData } from "../data/trafficHistory";
 import { db } from "../api/firebase";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const Status = ({ selectedCityId }) => {
-  const trafficStatus = trafficData[selectedCityId][moment().format("H")];
+  const expectedTraffic = trafficData[selectedCityId][moment().format("H")];
+
+  const [trafficStatus, setTrafficStatus] = useState(expectedTraffic);
+  const [powerStatus, setPowerStatus] = useState(0);
+  const [lightsStatus, setLightsStatus] = useState(0);
 
   const trafficDescription = {
     1000: (
@@ -30,9 +34,6 @@ const Status = ({ selectedCityId }) => {
     ),
   };
 
-  const powerStatus = 0;
-  const lightsStatus = 0;
-
   const powerDescription = {
     0: "Power is currently out",
     1: "Power is currently on",
@@ -43,15 +44,22 @@ const Status = ({ selectedCityId }) => {
     1: "Lights are on",
   };
 
+  const currentTrafficStatus = (expectedVal, trafficVal) => {
+    if (trafficVal === 0){
+      return expectedVal - 1000 === 0 ? 1000 : expectedVal - 1000;
+    } 
+    return expectedVal + 1000 === 4000 ? 3000 : expectedVal + 1000;
+  }
+
   useEffect(() => {
     const query = ref(db);
     return onValue(query, (snapshot) => {
-      const data = snapshot.val();
+      const doc = snapshot.val();
 
       if (snapshot.exists()) {
-        Object.values(data).map((project) => {
-          console.log(project);
-        });
+        setTrafficStatus(doc.data.traffic);
+        setPowerStatus(doc.data.power);
+        setLightsStatus(doc.data.light);
       }
     });
   }, []);
@@ -72,7 +80,7 @@ const Status = ({ selectedCityId }) => {
               <span className="px-3" aria-hidden="true">
                 &rarr;
               </span>
-              {trafficDescription[trafficStatus]}
+              {trafficDescription[currentTrafficStatus(expectedTraffic, trafficStatus)]}
             </a>
           </p>
         </div>
