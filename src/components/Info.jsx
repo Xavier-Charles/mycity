@@ -96,7 +96,7 @@ const Info = ({ cityData, selectedCityId }) => {
   ];
 
   return (
-    <div className="bg-gray-900 py-4">
+    <div id="infoSection" className="bg-gray-900 py-4">
       <h2 className="order-first text-center mb-16 text-3xl font-semibold tracking-tight text-white">
         Traffic History for {cityData[selectedCityId].name}
       </h2>

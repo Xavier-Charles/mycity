@@ -5,6 +5,15 @@ import badagry from "../assets/img/places/badagry.png";
 import sabo from "../assets/img/places/sabo.png";
 
 const Hero = ({ cityData, selectedCityId, setSelectedCityId }) => {
+  const infoSectionPos = document.getElementById("infoSection").getBoundingClientRect().y;
+  const handleClick = (id) => {
+    window.scrollTo({
+      top: infoSectionPos,
+      left: 0,
+      behavior: "smooth",
+    });
+    setSelectedCityId(id);
+  };
   return (
     <div className="bg-gray-900 py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
@@ -20,7 +29,7 @@ const Hero = ({ cityData, selectedCityId, setSelectedCityId }) => {
           </div>
           <dl className="mt-16 grid grid-cols-1 gap-0.5 overflow-hidden rounded-2xl text-center sm:grid-cols-2 lg:grid-cols-4">
             <div
-              onClick={() => setSelectedCityId("abeokuta")}
+              onClick={() => handleClick("abeokuta")}
               className={`flex flex-col bg-secondary/5 p-8 cursor-pointer ${
                 selectedCityId === "abeokuta"
                   ? "bg-gray-700"
@@ -33,7 +42,7 @@ const Hero = ({ cityData, selectedCityId, setSelectedCityId }) => {
               </dt>
             </div>
             <div
-              onClick={() => setSelectedCityId("apapa")}
+              onClick={() => handleClick("apapa")}
               className={`flex flex-col bg-secondary/5 p-8 cursor-pointer ${
                 selectedCityId === "apapa" ? "bg-gray-700" : " hover:opacity-80"
               }`}
@@ -44,7 +53,7 @@ const Hero = ({ cityData, selectedCityId, setSelectedCityId }) => {
               </dt>
             </div>
             <div
-              onClick={() => setSelectedCityId("badagry")}
+              onClick={() => handleClick("badagry")}
               className={`flex flex-col bg-secondary/5 p-8 cursor-pointer ${
                 selectedCityId === "badagry"
                   ? "bg-gray-700"
@@ -57,7 +66,7 @@ const Hero = ({ cityData, selectedCityId, setSelectedCityId }) => {
               </dt>
             </div>
             <div
-              onClick={() => setSelectedCityId("sabo")}
+              onClick={() => handleClick("sabo")}
               className={`flex flex-col bg-secondary/5 p-8 cursor-pointer ${
                 selectedCityId === "sabo" ? "bg-gray-700" : " hover:opacity-80"
               }`}
