@@ -3,7 +3,7 @@
 import moment from "moment";
 import { trafficData } from "../data/trafficHistory";
 
-const Status = ({ cityData, selectedCityId }) => {
+const Status = ({ selectedCityId }) => {
   const trafficStatus = trafficData[selectedCityId][moment().format("H")];
 
   const trafficDescription = {
