@@ -1,7 +1,10 @@
 /* eslint-disable react/prop-types */
 
 import moment from "moment";
+import { onValue, ref } from "firebase/database";
 import { trafficData } from "../data/trafficHistory";
+import { db } from "../api/firebase";
+import { useEffect } from "react";
 
 const Status = ({ selectedCityId }) => {
   const trafficStatus = trafficData[selectedCityId][moment().format("H")];
@@ -40,6 +43,18 @@ const Status = ({ selectedCityId }) => {
     1: "Lights are on",
   };
 
+  useEffect(() => {
+    const query = ref(db);
+    return onValue(query, (snapshot) => {
+      const data = snapshot.val();
+
+      if (snapshot.exists()) {
+        Object.values(data).map((project) => {
+          console.log(project);
+        });
+      }
+    });
+  }, []);
 
   return (
     <div className="bg-gray-900 py-6">
