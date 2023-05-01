@@ -14,7 +14,8 @@ const Hero = ({ cityData, selectedCityId, setSelectedCityId }) => {
               Stay Informed, Stay Connected: Your City at Your Fingertips
             </h2>
             <p className="mt-4 text-lg leading-8 text-gray-300">
-              Lorem ipsum dolor sit amet consect adipisicing possimus.
+              The essential app for monitoring both traffic and power supply
+              updates in your city.
             </p>
           </div>
           <dl className="mt-16 grid grid-cols-1 gap-0.5 overflow-hidden rounded-2xl text-center sm:grid-cols-2 lg:grid-cols-4">
