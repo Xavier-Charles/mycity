@@ -69,11 +69,11 @@ const Status = ({ selectedCityId }) => {
       <div className="pointer-events-none  sm:px-6 sm:pb-5 lg:px-8">
         <div className="pointer-events-auto flex items-center justify-between gap-x-6 bg-gray-800 max-w-7xl mx-auto px-6 py-2.5 sm:rounded-xl sm:py-3 sm:pl-4 sm:pr-3.5">
           <p className="text-lg leading-6 text-secondary">
-            <a href="#">
+            <span>
               <strong className="font-semibold">
                 Traffic Status{" "}
                 <span className="font-normal italic">
-                  ({moment().format("DD/MM/YY : HH:mm")})
+                  ({moment().format("DD/MM/YY : hh:mm A")})
                 </span>
               </strong>
 
@@ -81,18 +81,18 @@ const Status = ({ selectedCityId }) => {
                 &rarr;
               </span>
               {trafficDescription[currentTrafficStatus(expectedTraffic, trafficStatus)]}
-            </a>
+            </span>
           </p>
         </div>
       </div>
       <div className="pointer-events-none  sm:px-6 sm:pb-5 lg:px-8 pt-4">
         <div className="pointer-events-auto flex items-center justify-between gap-x-6 bg-gray-800 max-w-7xl mx-auto px-6 py-2.5 sm:rounded-xl sm:py-3 sm:pl-4 sm:pr-3.5">
           <p className="text-lg leading-6 text-secondary">
-            <a href="#">
+            <span>
               <strong className="font-semibold">
                 Power Status{" "}
                 <span className="font-normal italic">
-                  ({moment().format("DD/MM/YY : HH:mm")})
+                  ({moment().format("DD/MM/YY : hh:mm A")})
                 </span>
               </strong>
 
@@ -100,18 +100,18 @@ const Status = ({ selectedCityId }) => {
                 &rarr;
               </span>
               {powerDescription[powerStatus]}
-            </a>
+            </span>
           </p>
         </div>
       </div>
       <div className="pointer-events-none  sm:px-6 sm:pb-5 lg:px-8 pt-4">
         <div className="pointer-events-auto flex items-center justify-between gap-x-6 bg-gray-800 max-w-7xl mx-auto px-6 py-2.5 sm:rounded-xl sm:py-3 sm:pl-4 sm:pr-3.5">
           <p className="text-lg leading-6 text-secondary">
-            <a href="#">
+            <span>
               <strong className="font-semibold">
                 Street Light Status{" "}
                 <span className="font-normal italic">
-                  ({moment().format("DD/MM/YY : HH:mm")})
+                  ({moment().format("DD/MM/YY : hh:mm A")})
                 </span>
               </strong>
 
@@ -119,7 +119,7 @@ const Status = ({ selectedCityId }) => {
                 &rarr;
               </span>
               {lightsDescription[lightsStatus]}
-            </a>
+            </span>
           </p>
         </div>
       </div>
