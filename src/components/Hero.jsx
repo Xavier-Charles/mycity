@@ -1,9 +1,9 @@
+/* eslint-disable react/prop-types */
 import abeokuta from "../assets/img/places/abeokuta.png";
 import apapa from "../assets/img/places/apapa.png";
 import badagry from "../assets/img/places/badagry.png";
 import sabo from "../assets/img/places/sabo.png";
 
-// eslint-disable-next-line react/prop-types
 const Hero = ({ cityData, selectedCityId, setSelectedCityId }) => {
   return (
     <div className="bg-gray-900 py-24 sm:py-32">

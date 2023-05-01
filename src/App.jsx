@@ -2,6 +2,7 @@ import { useState } from "react";
 import Hero from "./components/Hero";
 import Nav from "./components/Nav";
 import Info from "./components/Info";
+import Status from "./components/status";
 
 function App() {
   const cityData = {
@@ -24,6 +25,7 @@ function App() {
         setSelectedCityId={setSelectedCityId}
       />
       <Info cityData={cityData} selectedCityId={selectedCityId} />
+      <Status cityData={cityData} selectedCityId={selectedCityId} />
     </>
   );
 }

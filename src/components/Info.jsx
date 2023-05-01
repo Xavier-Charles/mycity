@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import moment from "moment";
 import {
   XAxis,
@@ -8,7 +9,6 @@ import {
 } from "recharts";
 import { trafficData } from "../data/trafficHistory";
 
-// eslint-disable-next-line react/prop-types
 const Info = ({ cityData, selectedCityId }) => {
   const barColors = ["#d03922d9", "#FFA630", "#06a55d"];
 
