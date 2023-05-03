@@ -45,7 +45,7 @@ const Status = ({ selectedCityId }) => {
   };
 
   const currentTrafficStatus = (expectedVal, trafficVal) => {
-    if (trafficVal === 0){
+    if (trafficVal === 1){ // changed to suite hardware
       return expectedVal - 1000 === 0 ? 1000 : expectedVal - 1000;
     } 
     return expectedVal + 1000 === 4000 ? 3000 : expectedVal + 1000;
