@@ -1,18 +1,11 @@
 /* eslint-disable react/prop-types */
 
 import moment from "moment";
-import { onValue, ref } from "firebase/database";
-import { trafficData } from "../data/trafficHistory";
-import { db } from "../api/firebase";
-import { useEffect, useState } from "react";
 
-const Status = ({ selectedCityId }) => {
-  const expectedTraffic = trafficData[selectedCityId][moment().format("H")];
-
-  const [trafficStatus, setTrafficStatus] = useState(expectedTraffic);
-  const [powerStatus, setPowerStatus] = useState(0);
-  const [lightsStatus, setLightsStatus] = useState(0);
-
+const Status = ({
+  powerStatus,
+  lightsStatus,currentTrafficStatus
+}) => {
   const trafficDescription = {
     1000: (
       <span>
@@ -44,25 +37,6 @@ const Status = ({ selectedCityId }) => {
     1: "Lights are on",
   };
 
-  const currentTrafficStatus = (expectedVal, trafficVal) => {
-    if (trafficVal === 0){ 
-      return expectedVal - 1000 === 0 ? 1000 : expectedVal - 1000;
-    } 
-    return expectedVal + 1000 === 4000 ? 3000 : expectedVal + 1000;
-  }
-
-  useEffect(() => {
-    const query = ref(db);
-    return onValue(query, (snapshot) => {
-      const doc = snapshot.val();
-
-      if (snapshot.exists()) {
-        setTrafficStatus(doc.data.traffic);
-        setPowerStatus(doc.data.power);
-        setLightsStatus(doc.data.light);
-      }
-    });
-  }, []);
 
   return (
     <div className="bg-gray-900 py-6 pb-16">
@@ -80,7 +54,7 @@ const Status = ({ selectedCityId }) => {
               <span className="px-3" aria-hidden="true">
                 &rarr;
               </span>
-              {trafficDescription[currentTrafficStatus(expectedTraffic, trafficStatus)]}
+              {trafficDescription[currentTrafficStatus]}
             </span>
           </p>
         </div>

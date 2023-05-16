@@ -9,7 +9,7 @@ import {
 } from "recharts";
 import { trafficData } from "../data/trafficHistory";
 
-const Info = ({ cityData, selectedCityId }) => {
+const Info = ({ cityData, selectedCityId, currentTrafficStatus }) => {
   const barColors = ["#d03922", "#FFA630", "#06a55d"];
 
   const data = [
@@ -50,8 +50,7 @@ const Info = ({ cityData, selectedCityId }) => {
     },
     {
       time: moment().subtract(0, "hours").format("hh:mm A"),
-      degree:
-        trafficData[selectedCityId][moment().subtract(0, "hours").format("H")],
+      degree: currentTrafficStatus,
       pv: 4300,
       amt: 2100,
     },
