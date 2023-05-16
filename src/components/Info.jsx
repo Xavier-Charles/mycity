@@ -6,7 +6,6 @@ import {
   BarChart,
   Bar,
   Cell,
-  Legend,
 } from "recharts";
 import { trafficData } from "../data/trafficHistory";
 
